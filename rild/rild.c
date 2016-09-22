@@ -322,7 +322,9 @@ int main(int argc, char **argv) {
     }
 OpenLib:
 #endif
+#ifndef ROOT_RIL_INIT
     switchUser();
+#endif
 
     dlHandle = dlopen(rilLibPath, RTLD_NOW);
 
@@ -384,6 +386,10 @@ OpenLib:
     }
 
     RLOGD("RIL_register_socket completed");
+
+#ifdef ROOT_RIL_INIT
+    switchUser();
+#endif
 
 done:
 

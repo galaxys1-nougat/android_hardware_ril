@@ -26,6 +26,10 @@ ifeq ($(SIM_COUNT), 2)
     LOCAL_CFLAGS += -DANDROID_SIM_COUNT_2
 endif
 
+ifeq ($(TARGET_NEEDS_ROOT_RIL_INIT), true)
+    LOCAL_CFLAGS += -DROOT_RIL_INIT
+endif
+
 LOCAL_MODULE:= rild
 LOCAL_MODULE_TAGS := optional
 LOCAL_INIT_RC := rild.rc
